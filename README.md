@@ -1,0 +1,1 @@
+# golatin-logger-service
