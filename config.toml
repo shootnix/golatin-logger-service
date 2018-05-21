@@ -1,0 +1,8 @@
+[daemon]
+address = ":8081"
+
+[database]
+connection_info = "postgres://shootnix:12345@localhost/golatin?sslmode=disable"
+
+[log]
+level = "debug"
