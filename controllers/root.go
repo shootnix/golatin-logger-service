@@ -33,7 +33,7 @@ func POSTLog(w http.ResponseWriter, r *http.Request) {
 	var res LogResponse
 
 	if err := decoder.Decode(&req); err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		w.WriteHeader(http.StatusInternalServerError)
 		res.Success = false
 		res.Message = err.Error()
 
@@ -49,7 +49,7 @@ func POSTLog(w http.ResponseWriter, r *http.Request) {
 	l.Description = req.Description
 
 	if err := l.Validate(); err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		w.WriteHeader(http.StatusInternalServerError)
 		res.Success = false
 		res.Message = err.Error()
 
@@ -59,7 +59,7 @@ func POSTLog(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if err := l.Save(); err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		w.WriteHeader(http.StatusInternalServerError)
 		res.Success = false
 		res.Message = err.Error()
 
